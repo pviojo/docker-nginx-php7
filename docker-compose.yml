@@ -1,0 +1,15 @@
+version: '3'
+services:
+  # web server
+  web:
+    build: .
+    working_dir: /app
+    command: supervisord
+    network_mode: bridge
+    ports:
+      - "8080:80"
+    volumes:
+      # app code
+      - ./src:/app
+    environment:
+      - VAR=value
